@@ -6,3 +6,17 @@ before_install:
 
 script: 
   - docker run dmbondarenko/docker_basics npm run test-ci
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker_deloy_study"
+  env: "DockerDeloyStudy-env"
+  bucket_name: "elasticbeanstalk-us-east-1-928553449860"
+  bucket_path: "docker_deloy_study"
+  on: 
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+  
